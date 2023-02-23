@@ -7,4 +7,6 @@ public class Config
     public string Token { get; set; } = "CHANGEME";
 
     public string[] Prefixes { get; set; } = { "b!" };
+
+    public string[] MarkovLines { get; set; } = Array.Empty<string>();
 }

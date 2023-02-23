@@ -11,5 +11,6 @@ public static class Constants
     public static class Help
     {
         public const string HELPFUL = "💁 Helpful";
+        public const string FUN = "😆 Fun";
     }
 }
