@@ -4,6 +4,7 @@ using BillGate.Configuration;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Entities;
+using DSharpPlus.SlashCommands;
 using Microsoft.Extensions.Logging;
 
 namespace BillGate;
@@ -13,6 +14,7 @@ public class BillGateBot
     public Config Configuration = null!;
     public DiscordClient Discord = null!;
     public CommandsNextExtension Commands = null!;
+    public SlashCommandsExtension SlashCommands = null!;
 
     public async Task StartAsync()
     {
@@ -48,8 +50,11 @@ public class BillGateBot
         };
 
         this.Commands = this.Discord.UseCommandsNext(cmdsCfg);
+        this.SlashCommands = this.Discord.UseSlashCommands();
 
         this.Commands.RegisterCommands(Assembly.GetExecutingAssembly());
+        this.SlashCommands.RegisterCommands(Assembly.GetExecutingAssembly());
+
 
         await this.Discord.ConnectAsync(new DiscordActivity("Windows", ActivityType.Watching));
     }
